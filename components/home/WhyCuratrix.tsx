@@ -2,13 +2,12 @@
 
 import React from 'react';
 import { motion, type Variants } from 'framer-motion';
-import { Sparkles, Calendar, ArrowRight } from 'lucide-react';
+import { Sparkles, MessageSquare, ArrowRight } from 'lucide-react';
 import { Container } from '@/components/layout/container';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { FeatureCard } from '@/components/home/FeatureCard';
-import { Button } from '@/components/ui/button';
 import { WHY_CURATRIX_FEATURES, WHY_CURATRIX_HEADER } from '@/data/whyCuratrix';
-import { CONTACT_INFO } from '@/data/navigation';
+import { WHATSAPP_CONFIG } from '@/data/navigation';
 
 export function WhyCuratrix() {
   const containerVariants: Variants = {
@@ -16,7 +15,7 @@ export function WhyCuratrix() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
+        staggerChildren: 0.06,
       },
     },
   };
@@ -37,18 +36,8 @@ export function WhyCuratrix() {
     <section
       id="why-curatrix"
       aria-label="Why Choose Curatrix Academic Advisors"
-      className="pt-10 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20 relative overflow-hidden bg-gradient-to-b from-[#F7FAF2] via-[#F3F9EA]/60 to-[#F7F8F5] border-t border-[#8FBE00]/20"
+      className="py-12 sm:py-16 lg:py-20 bg-white border-t border-slate-200/80 relative"
     >
-      {/* Subtle Ambient Radial Mesh Glows */}
-      <div
-        className="pointer-events-none absolute top-10 -right-20 w-[450px] h-[450px] bg-[#8FBE00]/8 rounded-full blur-3xl"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute bottom-10 -left-20 w-[450px] h-[450px] bg-[#00A8C6]/8 rounded-full blur-3xl"
-        aria-hidden="true"
-      />
-
       <Container size="wide">
         {/* Section Heading */}
         <SectionHeading
@@ -75,13 +64,13 @@ export function WhyCuratrix() {
           ))}
         </motion.div>
 
-        {/* Bottom Mentorship Guarantee / Action Callout */}
+        {/* Bottom Mentorship Action Callout */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-30px' }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-10 sm:mt-14 p-6 sm:p-8 rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-md flex flex-col lg:flex-row items-center justify-between gap-6"
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="mt-10 sm:mt-12 p-6 sm:p-8 rounded-2xl bg-[#F8FAFC] border border-slate-200/90 shadow-xs flex flex-col lg:flex-row items-center justify-between gap-6"
         >
           <div className="flex items-start gap-3.5">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#8FBE00]/20 text-[#5a7b00]">
@@ -92,31 +81,21 @@ export function WhyCuratrix() {
                 Experience Personalized Global Admissions Mentorship
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mt-0.5 max-w-2xl leading-relaxed">
-                Connect with our advisory board to build a strategic admissions profile tailored to top universities in the USA, UK, Canada, Germany, or Australia.
+                Connect with our advisory board on WhatsApp to build a strategic admissions profile tailored to top universities in the USA, UK, Canada, Germany, or Australia.
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-2.5 shrink-0 w-full lg:w-auto">
-            <Button
-              href={CONTACT_INFO.bookingHref}
-              variant="primary"
-              size="md"
-              className="w-full sm:w-auto font-bold shadow-sm"
-              leadingIcon={<Calendar className="h-4 w-4" />}
-              trailingIcon={<ArrowRight className="h-3.5 w-3.5" />}
-            >
-              Book Free Strategy Call
-            </Button>
-            <Button
-              href="#calculator"
-              variant="outline"
-              size="md"
-              className="w-full sm:w-auto text-slate-800 font-semibold"
-            >
-              Check Eligibility
-            </Button>
-          </div>
+          <a
+            href={WHATSAPP_CONFIG.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full lg:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#8FBE00] hover:bg-[#7ea800] px-5 py-3 text-sm font-bold text-slate-950 shadow-xs transition-all duration-200 shrink-0"
+          >
+            <MessageSquare className="h-4 w-4 fill-slate-950/20" />
+            <span>Chat on WhatsApp</span>
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </motion.div>
       </Container>
     </section>

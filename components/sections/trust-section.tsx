@@ -17,7 +17,7 @@ export function TrustSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.08,
       },
     },
   };
@@ -38,7 +38,7 @@ export function TrustSection() {
     <section
       id="trust"
       aria-label="Trust, Partner Universities and Success Metrics"
-      className="py-10 sm:py-14 lg:py-16 bg-gradient-to-b from-[#F2F8EA]/80 via-[#F7FAF2] to-[#EBF5DF]/70 border-y border-[#8FBE00]/25 relative overflow-hidden"
+      className="py-12 sm:py-16 lg:py-20 bg-[#F8FAFC] border-y border-slate-200/80 relative"
     >
       {/* 1. University Logos Marquee Header */}
       <div className="mb-8 sm:mb-10">
@@ -57,10 +57,10 @@ export function TrustSection() {
             {[...UNIVERSITY_PARTNERS, ...UNIVERSITY_PARTNERS].map((uni, idx) => (
               <div
                 key={`${uni.id}-${idx}`}
-                className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white/95 border border-[#8FBE00]/25 shadow-2xs hover:border-[#00A8C6]/50 hover:shadow-md transition-all shrink-0 cursor-default"
+                className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs hover:border-[#00A8C6]/50 hover:shadow-xs transition-all shrink-0 cursor-default"
               >
                 {/* Monogram Emblem */}
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-slate-900 to-slate-800 text-white font-bold text-[11px] tracking-wider shadow-inner">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white font-black text-[11px] tracking-wider">
                   {uni.shortName.slice(0, 2).toUpperCase()}
                 </div>
 
@@ -90,10 +90,10 @@ export function TrustSection() {
         {/* Section Heading */}
         <SectionHeading
           badge="Verified Track Record"
-          badgeVariant="green"
+          badgeVariant="blue"
           title="Global Reach."
           highlight="Measurable Excellence."
-          subtitle="Delivering strategic admissions advisory, competitive scholarship procurement, and end-to-end visa filing support."
+          subtitle="Strategic admissions advisory, competitive scholarship procurement, and comprehensive visa guidance."
           className="mb-8 sm:mb-10"
         />
 
@@ -105,63 +105,37 @@ export function TrustSection() {
           viewport={{ once: true, margin: '-40px' }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5"
         >
-          {TRUST_SUCCESS_METRICS.map((metric) => {
-            const accentBorders = {
-              blue: 'hover:border-[#00A8C6]/60 hover:shadow-[#00A8C6]/10',
-              green: 'hover:border-[#8FBE00]/60 hover:shadow-[#8FBE00]/10',
-              slate: 'hover:border-slate-400 hover:shadow-slate-200',
-            };
-
-            const accentPill = {
-              blue: 'bg-[#00A8C6]/15 text-[#007d94]',
-              green: 'bg-[#8FBE00]/15 text-[#5a7b00]',
-              slate: 'bg-slate-100 text-slate-700',
-            };
-
-            return (
-              <motion.div
-                key={metric.id}
-                variants={itemVariants}
-                className={`relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-white/95 border border-slate-200/90 shadow-xs transition-all duration-300 hover:shadow-lg ${
-                  accentBorders[metric.highlightColor || 'blue']
-                }`}
-              >
-                <div>
-                  {/* Top indicator icon/pill */}
-                  <div className="flex items-center justify-between mb-3">
-                    <span
-                      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider ${
-                        accentPill[metric.highlightColor || 'blue']
-                      }`}
-                    >
-                      {metric.label}
-                    </span>
-                  </div>
-
-                  {/* Animated Counter */}
-                  <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight my-1.5">
-                    <StatCounter
-                      value={metric.value}
-                      prefix={metric.prefix}
-                      suffix={metric.suffix}
-                      className={
-                        metric.highlightColor === 'green'
-                          ? 'text-[#5a7b00]'
-                          : metric.highlightColor === 'blue'
-                          ? 'text-[#00A8C6]'
-                          : 'text-slate-900'
-                      }
-                    />
-                  </div>
+          {TRUST_SUCCESS_METRICS.map((metric) => (
+            <motion.div
+              key={metric.id}
+              variants={itemVariants}
+              className="relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs transition-all duration-300 hover:shadow-md hover:border-[#00A8C6]/40"
+            >
+              <div>
+                {/* Top indicator pill */}
+                <div className="flex items-center justify-between mb-3">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700">
+                    {metric.label}
+                  </span>
                 </div>
 
-                {/* Subtitle / Explanation */}
-                <p className="mt-2 text-xs text-slate-500 leading-relaxed border-t border-slate-100 pt-2.5">
-                  {metric.sublabel}
-                </p>
-              </motion.div>
-            );
-          })}
+                {/* Animated Counter */}
+                <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight my-1.5">
+                  <StatCounter
+                    value={metric.value}
+                    prefix={metric.prefix}
+                    suffix={metric.suffix}
+                    className="text-slate-900"
+                  />
+                </div>
+              </div>
+
+              {/* Subtitle / Explanation */}
+              <p className="mt-2 text-xs text-slate-500 leading-relaxed border-t border-slate-100 pt-2.5">
+                {metric.sublabel}
+              </p>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* 3. Accreditations & Quality Assurance */}
@@ -169,16 +143,16 @@ export function TrustSection() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-30px' }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-10 sm:mt-12 rounded-2xl bg-[#0B1315] text-white p-6 sm:p-8 border border-white/10 shadow-lg"
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="mt-10 sm:mt-12 rounded-2xl bg-slate-950 text-white p-6 sm:p-8 border border-white/10 shadow-sm"
         >
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
             <div>
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-[#8FBE00]/20 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-[#8FBE00] mb-1.5 border border-[#8FBE00]/30">
+              <div className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-[#8FBE00] mb-1.5 border border-white/15">
                 Advisory Integrity
               </div>
               <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white">
-                Admissions Standards & Certifications
+                Admissions Standards &amp; Certifications
               </h3>
             </div>
             <p className="text-xs sm:text-sm text-slate-300 max-w-md font-normal leading-relaxed">
@@ -190,7 +164,7 @@ export function TrustSection() {
             {TRUST_ACCREDITATIONS.map((acc) => (
               <div
                 key={acc.id}
-                className="flex items-start gap-3.5 p-3.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm"
+                className="flex items-start gap-3.5 p-3.5 rounded-xl bg-white/5 border border-white/10"
               >
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#00A8C6]/20 text-[#00A8C6]">
                   <svg

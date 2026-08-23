@@ -9,6 +9,7 @@ import {
   Coins,
   ShieldCheck,
   Workflow,
+  FileText,
   CheckCircle2,
   type LucideIcon,
 } from 'lucide-react';
@@ -23,6 +24,7 @@ const iconMap: Record<WhyCuratrixFeature['iconName'], LucideIcon> = {
   Coins,
   ShieldCheck,
   Workflow,
+  FileText,
 };
 
 interface FeatureCardProps {

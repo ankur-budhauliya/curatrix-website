@@ -1,4 +1,5 @@
 import { ServiceItem } from '@/types/service';
+import { WHATSAPP_CONFIG } from '@/data/navigation';
 
 export const SERVICES_DATA: ServiceItem[] = [
   {
@@ -15,8 +16,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Comprehensive family & student academic roadmap review',
       'Personalized admissions timeline and budget feasibility audit',
     ],
-    ctaLabel: 'Book Home Session',
-    ctaHref: '#book-consultation',
+    ctaLabel: 'Book Home Session on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
     featured: true,
   },
   {
@@ -33,8 +34,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Research & extracurricular spike roadmap',
       'Profile gap analysis & remediation plan',
     ],
-    ctaLabel: 'Evaluate Profile',
-    ctaHref: '#calculator',
+    ctaLabel: 'Evaluate Profile on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
   },
   {
     id: 'university-shortlisting',
@@ -42,7 +43,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: 'Elite University Shortlisting',
     subtitle: 'Data-Backed Institution Fit',
     description:
-      'Structured selection of Dream, Reach, Target, and Safe institutions across the USA, UK, Canada, Germany, and Australia based on historical acceptance data and career outcomes.',
+      'Structured selection of Dream, Reach, Target, and Safe institutions across the USA, UK, Canada, Germany, and Australia based on admissions criteria and career outcomes.',
     tag: 'Admissions Fit',
     tagVariant: 'green',
     deliverables: [
@@ -50,8 +51,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Course syllabus & faculty alignment check',
       'Intake deadline & ROI comparison matrix',
     ],
-    ctaLabel: 'Explore Universities',
-    ctaHref: '#destinations',
+    ctaLabel: 'Explore Universities on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
     featured: true,
   },
   {
@@ -60,7 +61,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: 'SOP, Essays & Resume Polish',
     subtitle: 'Editorial Narrative Crafting',
     description:
-      'Bespoke, multi-round editorial mentorship from Ivy League and Oxbridge alumni to craft authentic, intellectually compelling Statements of Purpose and supplemental essays.',
+      'Bespoke, multi-round editorial mentorship from experienced alumni to craft authentic, intellectually compelling Statements of Purpose and supplemental essays.',
     tag: 'Highest Impact',
     tagVariant: 'gold',
     deliverables: [
@@ -68,8 +69,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Line-by-line structural & rhetorical polish',
       'Academic CV & faculty letter of recommendation guidance',
     ],
-    ctaLabel: 'Request Review',
-    ctaHref: '#book-consultation',
+    ctaLabel: 'Request Review on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
     featured: true,
   },
   {
@@ -78,7 +79,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: 'Standardized Test Strategy',
     subtitle: 'Diagnostic Target Planning',
     description:
-      'Targeted preparation roadmaps and diagnostic strategy for GRE, GMAT, SAT, IELTS, and TOEFL exams tailored to your target institution score percentiles.',
+      'Targeted preparation roadmaps and diagnostic strategy for GRE, GMAT, SAT, IELTS, and TOEFL exams tailored to target institution score percentiles.',
     tag: 'Score Mastery',
     tagVariant: 'blue',
     deliverables: [
@@ -86,8 +87,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Score target timeline & test waiver advisory',
       'Sectional performance improvement roadmap',
     ],
-    ctaLabel: 'Plan Test Timeline',
-    ctaHref: '#book-consultation',
+    ctaLabel: 'Plan Test Timeline on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
   },
   {
     id: 'visa-mentorship',
@@ -95,7 +96,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: '100% Visa Filing & Consular Mocks',
     subtitle: 'Flawless Documentation',
     description:
-      'Comprehensive visa application assistance (US F-1, UK Student Route, Canada Study Permit, Germany Student Visa, Australia Subclass 500) with ex-consular mock interview drills.',
+      'Comprehensive visa application assistance (US F-1, UK Student Route, Canada Study Permit, Germany Student Visa, Australia Subclass 500) with consular mock interview drills.',
     tag: 'High Success',
     tagVariant: 'green',
     deliverables: [
@@ -103,8 +104,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       'DS-160 / CAS / GTE statement precision check',
       '1-on-1 mock consular interview drills',
     ],
-    ctaLabel: 'Prepare Visa',
-    ctaHref: '#book-consultation',
+    ctaLabel: 'Prepare Visa on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
     featured: true,
   },
   {
@@ -113,7 +114,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: 'Scholarship & Funding Advisory',
     subtitle: 'Maximizing Grant Procurement',
     description:
-      'Identifying and applying for institutional fellowships, merit scholarships, government grants, and international student funding opportunities to minimize tuition expenses.',
+      'Identifying and applying for institutional fellowships, merit scholarships, government grants, and international student funding opportunities.',
     tag: 'Funding Support',
     tagVariant: 'green',
     deliverables: [
@@ -121,8 +122,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       'External endowment & government grant essays',
       'Education loan negotiation advisory',
     ],
-    ctaLabel: 'Explore Aid Options',
-    ctaHref: '#book-consultation',
+    ctaLabel: 'Explore Aid Options on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
   },
   {
     id: 'career-pswr-strategy',
@@ -138,8 +139,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Industry hiring trends & alumni networking',
       'International graduate wage benchmarking',
     ],
-    ctaLabel: 'View ROI Insights',
-    ctaHref: '#destinations',
+    ctaLabel: 'View ROI on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
   },
   {
     id: 'pre-departure-briefing',
@@ -147,7 +148,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: 'Pre-Departure & Alumni Onboarding',
     subtitle: 'Seamless Transition to Campus',
     description:
-      'Pre-departure orientation covering accommodation shortlisting, health insurance, international banking, flight logistics, and connections with senior student mentors on campus.',
+      'Pre-departure orientation covering accommodation shortlisting, health insurance, international banking, flight logistics, and campus readiness.',
     tag: 'Arrival Ready',
     tagVariant: 'slate',
     deliverables: [
@@ -155,7 +156,7 @@ export const SERVICES_DATA: ServiceItem[] = [
       'Forex card & international bank account setup',
       'Campus alumni mentor introductions',
     ],
-    ctaLabel: 'Get Ready to Fly',
-    ctaHref: '#book-consultation',
+    ctaLabel: 'Get Ready on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
   },
 ];

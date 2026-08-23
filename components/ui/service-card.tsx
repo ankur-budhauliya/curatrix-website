@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   Compass,
@@ -19,6 +18,7 @@ import {
 } from 'lucide-react';
 import { ServiceItem } from '@/types/service';
 import { Badge } from '@/components/ui/badge';
+import { WHATSAPP_CONFIG } from '@/data/navigation';
 import { cn } from '@/lib/utils';
 
 const iconMap: Record<ServiceItem['iconName'], LucideIcon> = {
@@ -43,21 +43,19 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
 
   return (
     <motion.article
-      whileHover={{ y: -4, transition: { duration: 0.25, ease: 'easeOut' } }}
+      whileHover={{ y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
       className={cn(
-        'group relative flex flex-col justify-between rounded-2xl p-5 sm:p-6 transition-all duration-300',
-        'bg-white/90 backdrop-blur-xl border border-slate-200/80 shadow-xs hover:shadow-xl hover:shadow-[#00A8C6]/10 hover:border-[#00A8C6]/50',
-        service.featured
-          ? 'border-[#00A8C6]/40 ring-1 ring-[#00A8C6]/20 bg-gradient-to-b from-white via-white to-[#F2F8EA]/30'
-          : 'hover:border-[#00A8C6]/40',
+        'group relative flex flex-col justify-between rounded-2xl p-5 sm:p-6 transition-all duration-300 h-full',
+        'bg-white border border-slate-200/80 shadow-xs hover:shadow-lg hover:border-[#00A8C6]/50',
+        service.featured ? 'border-[#00A8C6]/40 ring-1 ring-[#00A8C6]/15' : '',
         className
       )}
     >
-      {/* Featured Ribbon / Highlight */}
+      {/* Featured Badge */}
       {service.featured && (
         <div className="absolute -top-2.5 right-5 z-10">
-          <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#00A8C6] to-[#8FBE00] px-2.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-white shadow-xs">
-            ★ Core Offering
+          <span className="inline-flex items-center gap-1 rounded-full bg-slate-900 px-2.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-white shadow-xs">
+            ★ Core Pillar
           </span>
         </div>
       )}
@@ -65,8 +63,8 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
       <div>
         {/* Header: Icon & Tag */}
         <div className="flex items-center justify-between gap-3 mb-3.5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#00A8C6]/15 to-[#8FBE00]/15 text-[#00A8C6] group-hover:bg-[#00A8C6] group-hover:text-white transition-all duration-300 shadow-xs">
-            <IconComponent className="h-5 w-5 transition-transform duration-300 group-hover:scale-105" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#00A8C6]/10 text-[#00A8C6] group-hover:bg-[#00A8C6] group-hover:text-white transition-all duration-300 shadow-2xs">
+            <IconComponent className="h-5 w-5" />
           </div>
 
           {service.tag && (
@@ -107,15 +105,17 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
         </div>
       </div>
 
-      {/* Card Action Link */}
-      <div className="pt-2 border-t border-slate-100/60">
-        <Link
-          href={service.ctaHref || '#book-consultation'}
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#00A8C6] group-hover:text-[#0094ae] hover:underline"
+      {/* Card Action Link to WhatsApp */}
+      <div className="pt-3 border-t border-slate-100">
+        <a
+          href={service.ctaHref || WHATSAPP_CONFIG.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#00A8C6] group-hover:text-[#008ba4] hover:underline"
         >
-          <span>{service.ctaLabel || 'Learn More'}</span>
+          <span>{service.ctaLabel || 'Chat on WhatsApp'}</span>
           <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-        </Link>
+        </a>
       </div>
     </motion.article>
   );
