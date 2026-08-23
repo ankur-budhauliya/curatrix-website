@@ -1,29 +1,26 @@
 import { NavItem, AnnouncementItem } from '@/types/navigation';
 
 export const WHATSAPP_CONFIG = {
-  number: '919876543210',
-  defaultMessage: 'Hello Curatrix, I would like to book a free study abroad consultation.',
-  get link() {
-    return `https://wa.me/${this.number}?text=${encodeURIComponent(this.defaultMessage)}`;
-  },
+  number: '919667795333',
+  link: 'https://wa.me/919667795333?text=Hi%20Curatrix%20Team!%20I%20came%20across%20your%20website%20and%20would%20like%20to%20book%20a%20free%20consultation%20for%20studying%20abroad.%20Please%20guide%20me.',
 };
 
 export const CONTACT_INFO = {
-  email: 'admissions@curatrix.co.in',
-  whatsappNumber: WHATSAPP_CONFIG.number,
+  companyName: 'Curatrix Private Limited',
+  phone: '+91 9667795333',
+  whatsappNumber: '+91 9667795333',
   whatsappHref: WHATSAPP_CONFIG.link,
-  officeCity: 'Noida',
-  officeAddress: 'Sector 62, Noida, Uttar Pradesh, India',
+  email: 'sukhwinder@curatrix.co.in',
+  officeAddress: 'B320, Logix Technova, Sector 134, Noida, Uttar Pradesh, India',
   socialLinks: {
-    instagram: 'https://instagram.com/curatrix.co.in',
-    linkedin: 'https://linkedin.com/company/curatrix',
+    instagram: 'https://www.instagram.com/curatrix.pvt.ltd?igsi=NXViYjhwaHlheTRp',
   },
 };
 
 export const ANNOUNCEMENT_DATA: AnnouncementItem = {
   id: 'fall-2026-intake',
   badge: 'Fall 2026 & Spring 2027 Admissions Open',
-  text: 'Connect with expert admissions advisors on WhatsApp for priority candidate review.',
+  text: 'Connect directly with our admissions advisors on WhatsApp for personalized guidance.',
   linkText: 'Chat on WhatsApp',
   href: WHATSAPP_CONFIG.link,
 };
@@ -43,19 +40,19 @@ export const NAV_ITEMS: NavItem[] = [
       {
         title: 'Profile Diagnostic & Strategy',
         href: '#services',
-        description: 'Deep audit of academic, extracurricular, and research profile',
+        description: 'Comprehensive audit of academic background and career goals',
         icon: 'compass',
       },
       {
         title: 'Elite University Shortlisting',
         href: '#services',
-        description: 'Data-backed dream, target, and safe university matrix',
+        description: 'Structured dream, target, and safe university selection',
         icon: 'target',
       },
       {
         title: 'SOP, Essays & Resume Polish',
         href: '#services',
-        description: 'Ivy-trained editors refining your story to perfection',
+        description: 'Multi-round editorial refinement for personal statements',
         badge: 'Most Popular',
         icon: 'edit',
       },
@@ -66,15 +63,15 @@ export const NAV_ITEMS: NavItem[] = [
         icon: 'award',
       },
       {
-        title: '100% Visa Mentorship & Mocks',
+        title: 'Visa Guidance & Mock Drills',
         href: '#services',
-        description: 'High approval rate with structured consular mock drills',
+        description: 'Complete documentation support with consular mock interview drills',
         icon: 'shield',
       },
       {
-        title: 'Scholarship & Funding Advisory',
+        title: 'Scholarship Advisory',
         href: '#services',
-        description: 'Institutional fellowships & grant application advisory',
+        description: 'Guidance in identifying university grants and merit aid',
         icon: 'dollar',
       },
     ],
@@ -86,35 +83,35 @@ export const NAV_ITEMS: NavItem[] = [
       {
         title: 'United States',
         href: '#destinations',
-        description: 'Ivy League, Tier-1 STEM research & up to 3 years STEM OPT',
+        description: 'World-renowned institutions, flexible curricula & STEM OPT',
         badge: 'Top Choice',
         icon: 'us',
       },
       {
         title: 'United Kingdom',
         href: '#destinations',
-        description: 'Russell Group excellence, 1-year Master’s & 2-year PSW visa',
+        description: 'Russell Group institutions, 1-year Master’s & 2-year Graduate Route',
         badge: 'Popular',
         icon: 'gb',
       },
       {
         title: 'Canada',
         href: '#destinations',
-        description: 'Post-Graduation Work Permit (PGWP) & clear PR pathways',
+        description: 'U15 research universities & Post-Graduation Work Permit (PGWP)',
         badge: 'High ROI',
         icon: 'ca',
       },
       {
         title: 'Germany',
         href: '#destinations',
-        description: 'Tuition-free public universities & premier engineering hub',
+        description: 'Tuition-free public universities & premier engineering education',
         badge: 'Zero Tuition',
         icon: 'de',
       },
       {
         title: 'Australia',
         href: '#destinations',
-        description: 'Group of Eight institutions with high post-study work rights',
+        description: 'Group of Eight universities with post-study work rights',
         badge: 'High Demand',
         icon: 'au',
       },

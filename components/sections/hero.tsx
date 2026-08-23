@@ -3,11 +3,9 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, type Variants } from 'framer-motion';
-import { MessageSquare, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { MessageSquare, ArrowRight, CheckCircle2, ShieldCheck, Home, Globe } from 'lucide-react';
 import { Container } from '@/components/layout/container';
 import { WHATSAPP_CONFIG } from '@/data/navigation';
-import { HERO_STATS } from '@/data/stats';
-import { StatCounter } from '@/components/ui/stat-counter';
 
 export function Hero() {
   const containerVariants: Variants = {
@@ -41,7 +39,7 @@ export function Hero() {
           animate="visible"
           className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center"
         >
-          {/* Left Column: Premium Value Proposition & Action */}
+          {/* Left Column: Value Proposition & Action */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             {/* Top Cohort Announcement Pill */}
             <motion.div variants={itemVariants} className="inline-flex">
@@ -69,7 +67,7 @@ export function Hero() {
               variants={itemVariants}
               className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal"
             >
-              Bespoke end-to-end admissions mentorship, strategic profile building, scholarship guidance, and personalized home counselling for students targeting top-tier global institutions.
+              Bespoke admissions mentorship, strategic profile building, scholarship guidance, and personalized home counselling for students targeting top-tier global institutions across the USA, UK, Canada, Germany, and Australia.
             </motion.p>
 
             {/* Core Value Checklist */}
@@ -87,7 +85,7 @@ export function Hero() {
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="h-4 w-4 text-[#8FBE00]" />
-                <span>USA • UK • Canada • Germany • Australia</span>
+                <span>Transparent &amp; Ethical Process</span>
               </span>
             </motion.div>
 
@@ -109,7 +107,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Column: Clean Campus Showcase Card */}
+          {/* Right Column: Campus Showcase Card */}
           <motion.div
             variants={itemVariants}
             className="lg:col-span-5 relative flex items-center justify-center"
@@ -118,7 +116,7 @@ export function Hero() {
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-950">
                 <Image
                   src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop"
-                  alt="Curatrix students on university campus"
+                  alt="Students on university campus with Curatrix Private Limited"
                   fill
                   sizes="(max-width: 768px) 100vw, 480px"
                   priority
@@ -128,13 +126,13 @@ export function Hero() {
 
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#8FBE00]">
-                    Admissions Excellence
+                    Bespoke Advisory
                   </span>
                   <div className="text-base font-black text-white leading-tight mt-0.5">
-                    Curatrix Academic Advisors
+                    Curatrix Private Limited
                   </div>
                   <p className="text-xs text-slate-300 mt-0.5">
-                    Empowering students for leading global faculties
+                    Global admissions &amp; educational mentorship
                   </p>
                 </div>
               </div>
@@ -151,36 +149,54 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Dynamic Trust Stats Bar */}
+        {/* Value Pillars Strip (Zero Fake Numbers) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.45, delay: 0.1 }}
           className="mt-10 sm:mt-12 pt-6 border-t border-slate-200/80"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {HERO_STATS.map((stat) => (
-              <div
-                key={stat.id}
-                className="flex flex-col p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs"
-              >
-                <div className="flex items-baseline gap-1 text-2xl sm:text-3xl font-black text-slate-900">
-                  <StatCounter
-                    value={stat.value}
-                    prefix={stat.prefix}
-                    suffix={stat.suffix}
-                    className={stat.highlight ? 'text-[#00A8C6]' : 'text-slate-900'}
-                  />
-                </div>
-                <div className="mt-1 text-xs sm:text-sm font-bold text-slate-800">
-                  {stat.label}
-                </div>
-                <div className="mt-0.5 text-[11px] text-slate-500">
-                  {stat.description}
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#00A8C6]/10 text-[#00A8C6]">
+                <Globe className="h-5 w-5" />
               </div>
-            ))}
+              <div>
+                <div className="text-xs font-bold text-slate-900">5 Top Destinations</div>
+                <div className="text-[11px] text-slate-500">USA, UK, Canada, Germany, Australia</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#8FBE00]/15 text-[#5a7b00]">
+                <Home className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-slate-900">Home Counselling</div>
+                <div className="text-[11px] text-slate-500">In-person guidance for families</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#00A8C6]/10 text-[#00A8C6]">
+                <ShieldCheck className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-slate-900">Transparent Advisory</div>
+                <div className="text-[11px] text-slate-500">Zero hidden commercial bias</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-4 rounded-xl bg-white border border-slate-200/80 shadow-2xs">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-800">
+                <CheckCircle2 className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-slate-900">End-to-End Support</div>
+                <div className="text-[11px] text-slate-500">From shortlist to visa &amp; arrival</div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </Container>

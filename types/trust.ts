@@ -3,18 +3,15 @@ export interface UniversityLogo {
   name: string;
   shortName: string;
   country: string;
-  category?: string;
-  ranking?: string;
+  category: string;
 }
 
-export interface TrustMetricItem {
+export interface TrustValueItem {
   id: string;
-  value: number;
-  prefix?: string;
-  suffix: string;
-  label: string;
-  sublabel: string;
-  highlightColor?: 'blue' | 'green' | 'slate';
+  title: string;
+  description: string;
+  iconName: 'UserCheck' | 'ShieldCheck' | 'HeartHandshake' | 'Compass' | 'Home' | 'Workflow';
+  badge?: string;
 }
 
 export interface AccreditationItem {
@@ -22,5 +19,4 @@ export interface AccreditationItem {
   title: string;
   issuer: string;
   description: string;
-  icon: string;
 }

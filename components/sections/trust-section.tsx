@@ -2,14 +2,33 @@
 
 import React from 'react';
 import { motion, type Variants } from 'framer-motion';
+import {
+  UserCheck,
+  ShieldCheck,
+  HeartHandshake,
+  Compass,
+  Home,
+  Workflow,
+  type LucideIcon,
+} from 'lucide-react';
 import { Container } from '@/components/layout/container';
 import { SectionHeading } from '@/components/ui/section-heading';
-import { StatCounter } from '@/components/ui/stat-counter';
 import {
   UNIVERSITY_PARTNERS,
-  TRUST_SUCCESS_METRICS,
+  TRUST_CORE_VALUES,
   TRUST_ACCREDITATIONS,
 } from '@/data/trust';
+import { TrustValueItem } from '@/types/trust';
+import { Badge } from '@/components/ui/badge';
+
+const iconMap: Record<TrustValueItem['iconName'], LucideIcon> = {
+  UserCheck,
+  ShieldCheck,
+  HeartHandshake,
+  Compass,
+  Home,
+  Workflow,
+};
 
 export function TrustSection() {
   const containerVariants: Variants = {
@@ -17,7 +36,7 @@ export function TrustSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
+        staggerChildren: 0.06,
       },
     },
   };
@@ -37,15 +56,15 @@ export function TrustSection() {
   return (
     <section
       id="trust"
-      aria-label="Trust, Partner Universities and Success Metrics"
+      aria-label="Our Values, Global Institutions, and Standards"
       className="py-12 sm:py-16 lg:py-20 bg-[#F8FAFC] border-y border-slate-200/80 relative"
     >
-      {/* 1. University Logos Marquee Header */}
-      <div className="mb-8 sm:mb-10">
+      {/* 1. Global Institutions Marquee */}
+      <div className="mb-10 sm:mb-12">
         <Container size="wide">
           <div className="text-center mb-4">
             <span className="text-xs font-bold uppercase tracking-widest text-slate-500">
-              Students Mentored for Leading Global Institutions
+              Guidance for Leading Global Institutions Across 5 Key Destinations
             </span>
           </div>
         </Container>
@@ -53,11 +72,10 @@ export function TrustSection() {
         {/* Marquee Track */}
         <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <div className="flex w-max animate-marquee gap-3.5 py-1.5">
-            {/* Duplicated list for seamless infinite loop */}
             {[...UNIVERSITY_PARTNERS, ...UNIVERSITY_PARTNERS].map((uni, idx) => (
               <div
                 key={`${uni.id}-${idx}`}
-                className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs hover:border-[#00A8C6]/50 hover:shadow-xs transition-all shrink-0 cursor-default"
+                className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs hover:border-[#00A8C6]/50 transition-all shrink-0 cursor-default"
               >
                 {/* Monogram Emblem */}
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white font-black text-[11px] tracking-wider">
@@ -85,60 +103,65 @@ export function TrustSection() {
         </div>
       </div>
 
-      {/* 2. Success Numbers & Metrics */}
+      {/* 2. Core Values Grid (No fake numbers or statistics) */}
       <Container size="wide">
         {/* Section Heading */}
         <SectionHeading
-          badge="Verified Track Record"
+          badge="Our Commitments"
           badgeVariant="blue"
-          title="Global Reach."
-          highlight="Measurable Excellence."
-          subtitle="Strategic admissions advisory, competitive scholarship procurement, and comprehensive visa guidance."
+          title="Our Foundation. Built on"
+          highlight="Integrity & Excellence."
+          subtitle="Every student’s aspiration is unique. We provide transparent, ethical, and dedicated admissions mentorship designed around candidate success."
           className="mb-8 sm:mb-10"
         />
 
-        {/* 4-Card Success Metrics Grid */}
+        {/* 6 Core Values Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
         >
-          {TRUST_SUCCESS_METRICS.map((metric) => (
-            <motion.div
-              key={metric.id}
-              variants={itemVariants}
-              className="relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs transition-all duration-300 hover:shadow-md hover:border-[#00A8C6]/40"
-            >
-              <div>
-                {/* Top indicator pill */}
-                <div className="flex items-center justify-between mb-3">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700">
-                    {metric.label}
-                  </span>
-                </div>
+          {TRUST_CORE_VALUES.map((val) => {
+            const IconComponent = iconMap[val.iconName] || Compass;
 
-                {/* Animated Counter */}
-                <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight my-1.5">
-                  <StatCounter
-                    value={metric.value}
-                    prefix={metric.prefix}
-                    suffix={metric.suffix}
-                    className="text-slate-900"
-                  />
-                </div>
-              </div>
+            return (
+              <motion.div
+                key={val.id}
+                variants={itemVariants}
+                className="group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs transition-all duration-300 hover:shadow-md hover:border-[#00A8C6]/40"
+              >
+                <div>
+                  {/* Top Icon & Badge */}
+                  <div className="flex items-center justify-between gap-3 mb-3.5">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#00A8C6]/10 text-[#00A8C6] group-hover:bg-[#00A8C6] group-hover:text-white transition-all duration-300 shadow-2xs">
+                      <IconComponent className="h-5 w-5" />
+                    </div>
 
-              {/* Subtitle / Explanation */}
-              <p className="mt-2 text-xs text-slate-500 leading-relaxed border-t border-slate-100 pt-2.5">
-                {metric.sublabel}
-              </p>
-            </motion.div>
-          ))}
+                    {val.badge && (
+                      <Badge variant="slate" size="sm">
+                        {val.badge}
+                      </Badge>
+                    )}
+                  </div>
+
+                  {/* Value Title */}
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-[#00A8C6] transition-colors mb-2">
+                    {val.title}
+                  </h3>
+
+                  {/* Value Description */}
+                  <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed font-normal">
+                    {val.description}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
-        {/* 3. Accreditations & Quality Assurance */}
+        {/* 3. Accreditations & Standards */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -152,11 +175,11 @@ export function TrustSection() {
                 Advisory Integrity
               </div>
               <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white">
-                Admissions Standards &amp; Certifications
+                Admissions Standards &amp; Professional Ethics
               </h3>
             </div>
             <p className="text-xs sm:text-sm text-slate-300 max-w-md font-normal leading-relaxed">
-              Curatrix operates strictly under global international recruitment frameworks, ensuring transparent university representations.
+              Curatrix Private Limited operates strictly under transparent global international education guidelines, ensuring honest university representations.
             </p>
           </div>
 
@@ -167,19 +190,7 @@ export function TrustSection() {
                 className="flex items-start gap-3.5 p-3.5 rounded-xl bg-white/5 border border-white/10"
               >
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#00A8C6]/20 text-[#00A8C6]">
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-white leading-tight">
