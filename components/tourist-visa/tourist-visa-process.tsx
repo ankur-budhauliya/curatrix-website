@@ -4,32 +4,29 @@ import React from 'react';
 import { motion, type Variants } from 'framer-motion';
 import {
   MessageSquare,
-  Compass,
-  Target,
+  FolderCheck,
+  FileEdit,
   Send,
-  MailCheck,
-  ShieldCheck,
+  Clock,
   Plane,
   ArrowRight,
   type LucideIcon,
 } from 'lucide-react';
 import { Container } from '@/components/layout/container';
 import { SectionHeading } from '@/components/ui/section-heading';
-import { ADMISSION_STEPS, ROADMAP_HEADER } from '@/data/roadmap';
-import { TimelineStep } from '@/types/timeline';
-import { WHATSAPP_CONFIG } from '@/data/navigation';
+import { TOURIST_VISA_STEPS, TOURIST_VISA_WHATSAPP } from '@/data/touristVisaCountries';
+import { TouristVisaStep } from '@/types/touristVisa';
 
-const iconMap: Record<TimelineStep['iconName'], LucideIcon> = {
+const iconMap: Record<TouristVisaStep['iconName'], LucideIcon> = {
   MessageSquare,
-  Compass,
-  Target,
+  FolderCheck,
+  FileEdit,
   Send,
-  MailCheck,
-  ShieldCheck,
-  Plane,
+  Clock,
+  PlaneTakeoff: Plane,
 };
 
-export function AdmissionProcess() {
+export function TouristVisaProcess() {
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -54,38 +51,37 @@ export function AdmissionProcess() {
 
   return (
     <section
-      id="roadmap"
-      aria-label="7-Stage Admission Process Roadmap"
+      id="tourist-visa-process"
+      aria-label="Tourist Visa Application Process Timeline"
       className="py-12 sm:py-16 lg:py-20 bg-white border-t border-slate-200/80 relative"
     >
       <Container size="wide">
         {/* Section Heading */}
         <SectionHeading
-          badge={ROADMAP_HEADER.badge}
+          badge="Step-by-Step Flow"
           badgeVariant="blue"
-          title={ROADMAP_HEADER.title}
-          highlight={ROADMAP_HEADER.highlight}
-          subtitle={ROADMAP_HEADER.subtitle}
+          title="Our Simple"
+          highlight="Visa Process."
+          subtitle="A structured 6-step roadmap ensuring clean documentation, timely submissions, and clear guidance for your international travel."
           className="mb-8 sm:mb-10"
         />
 
-        {/* 7-Step Timeline Grid */}
+        {/* 6-Step Timeline Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-4 relative"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 relative"
         >
-          {ADMISSION_STEPS.map((step, idx) => {
-            const IconComponent = iconMap[step.iconName] || Compass;
+          {TOURIST_VISA_STEPS.map((step, idx) => {
+            const IconComponent = iconMap[step.iconName] || MessageSquare;
 
             return (
               <motion.div
                 key={step.stepNumber}
                 variants={itemVariants}
-                whileHover={{ y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
-                className="group relative flex flex-col justify-between rounded-2xl p-4 sm:p-4.5 bg-[#F8FAFC] border border-slate-200/80 shadow-2xs hover:shadow-xl hover:border-[#00A8C6] hover:bg-white transition-all duration-300 ease-out h-full"
+                className="group relative flex flex-col justify-between rounded-2xl p-4 sm:p-4.5 bg-[#F8FAFC] border border-slate-200/80 shadow-2xs hover:shadow-md hover:border-[#00A8C6]/50 hover:bg-white transition-all duration-300 h-full"
               >
                 <div>
                   {/* Step Milestone Indicator & Number */}
@@ -116,7 +112,7 @@ export function AdmissionProcess() {
                 </div>
 
                 {/* Milestone Connector Arrow (hidden on last item) */}
-                {idx < ADMISSION_STEPS.length - 1 && (
+                {idx < TOURIST_VISA_STEPS.length - 1 && (
                   <div className="hidden xl:block absolute -right-2.5 top-1/2 -translate-y-1/2 z-10 text-slate-300 group-hover:text-[#00A8C6] transition-colors">
                     <ArrowRight className="h-4 w-4" />
                   </div>
@@ -128,18 +124,18 @@ export function AdmissionProcess() {
 
         {/* Bottom CTA Banner */}
         <div className="mt-10 sm:mt-12 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-3.5 p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 max-w-xl mx-auto shadow-2xs">
+          <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-3.5 p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 max-w-xl mx-auto">
             <span className="text-xs sm:text-sm font-bold text-slate-800">
-              Ready to begin Stage 01 of your admissions roadmap?
+              Ready to start your tourist visa application?
             </span>
             <a
-              href={WHATSAPP_CONFIG.link}
+              href={TOURIST_VISA_WHATSAPP.heroCta}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-[#8FBE00] hover:bg-[#7ea800] px-4 py-2 text-xs font-bold text-slate-950 shadow-xs transition-all duration-200 whitespace-nowrap"
             >
               <MessageSquare className="h-3.5 w-3.5 fill-slate-950/20" />
-              <span>Start on WhatsApp</span>
+              <span>Inquire on WhatsApp</span>
             </a>
           </div>
         </div>

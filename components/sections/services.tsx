@@ -35,17 +35,17 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      aria-label="Study Abroad Consulting Services"
+      aria-label="End-to-End Study Abroad Services"
       className="py-12 sm:py-16 lg:py-20 bg-[#F7F8F5] border-t border-slate-200/80 relative"
     >
       <Container size="wide">
         {/* Section Heading */}
         <SectionHeading
-          badge="End-to-End Mentorship Matrix"
+          badge="Core Specialization"
           badgeVariant="blue"
-          title="Precision Advisory for Your"
-          highlight="Global Journey."
-          subtitle="From profile diagnostics and Ivy-grade essay polish to visa mock drills and scholarship discovery—our bespoke services cover every milestone."
+          title="End-to-End Study Abroad"
+          highlight="Services."
+          subtitle="From profile diagnostics and university shortlisting to SOP polish, student visa mock drills, and financial advisory—our bespoke services cover every milestone of your global admissions journey."
           className="mb-8 sm:mb-10"
         />
 
@@ -78,10 +78,10 @@ export function ServicesSection() {
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900">
-                Unsure which mentorship plan matches your profile?
+                Unsure which study abroad pathway matches your profile?
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mt-0.5 max-w-2xl leading-relaxed">
-                Connect on WhatsApp with an admissions mentor to assess your profile and map out targeted university brackets.
+                Connect on WhatsApp with our senior study abroad advisors to assess your academic profile and map out targeted global university brackets.
               </p>
             </div>
           </div>
@@ -93,7 +93,7 @@ export function ServicesSection() {
             className="w-full lg:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#8FBE00] hover:bg-[#7ea800] px-5 py-3 text-sm font-bold text-slate-950 shadow-xs transition-all duration-200 shrink-0"
           >
             <MessageSquare className="h-4 w-4 fill-slate-950/20" />
-            <span>Book Strategy Session on WhatsApp</span>
+            <span>Book Free Consultation on WhatsApp</span>
           </a>
         </motion.div>
       </Container>

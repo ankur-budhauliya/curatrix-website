@@ -3,17 +3,20 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { MessageSquare } from 'lucide-react';
 import { NAV_ITEMS, WHATSAPP_CONFIG } from '@/data/navigation';
 import { Container } from '@/components/layout/container';
 import { AnnouncementBanner } from '@/components/layout/announcement-banner';
 import { NavDropdown } from '@/components/layout/nav-dropdown';
 import { MobileNav } from '@/components/layout/mobile-nav';
+import { NavItem } from '@/types/navigation';
 import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +26,16 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const isItemActive = (item: NavItem) => {
+    if (item.label === 'Study Abroad') {
+      return pathname === '/' || pathname === '';
+    }
+    if (item.label === 'Tourist Visa') {
+      return pathname === '/tourist-visa' || pathname?.startsWith('/tourist-visa');
+    }
+    return false;
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full">
@@ -35,22 +48,23 @@ export function Navbar() {
         className={cn(
           'w-full transition-all duration-200 border-b',
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md border-slate-200/80 shadow-xs py-2.5 sm:py-3'
-            : 'bg-[#F7F8F5]/95 border-transparent py-3 sm:py-3.5'
+            ? 'bg-white/95 backdrop-blur-md border-slate-200/80 shadow-xs py-2 sm:py-2.5'
+            : 'bg-[#F7F8F5]/95 border-transparent py-2.5 sm:py-3'
         )}
       >
         <Container size="wide">
-          <div className="flex items-center justify-between gap-6">
-            {/* Prominent Official Brand Logo (Enlarged 35-45%) */}
+          <div className="flex items-center justify-between gap-4 lg:gap-8">
+            {/* Prominent Official Brand Logo & Name (Unified Link to Homepage) */}
             <Link
               href="/"
-              className="group flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A8C6] rounded-xl p-1 -ml-1 select-none"
-              aria-label="Curatrix Academic Advisors Homepage"
+              className="group flex items-center gap-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A8C6] rounded-xl p-1 -ml-1 select-none cursor-pointer"
+              aria-label="Curatrix Private Limited Homepage"
             >
-              <div className="relative h-13 w-13 sm:h-15 sm:w-15 shrink-0 overflow-hidden rounded-full border border-slate-200 shadow-xs bg-white transition-transform duration-200 group-hover:scale-105">
+              {/* Enlarge Logo by ~18% (h-14 sm:h-16) */}
+              <div className="relative h-14 w-14 sm:h-16 sm:w-16 shrink-0 overflow-hidden rounded-full border border-slate-200/90 shadow-xs bg-white transition-transform duration-200 group-hover:scale-105">
                 <Image
                   src="/logo.png"
-                  alt="Curatrix Academic Advisors Logo"
+                  alt="Curatrix Private Limited Logo"
                   fill
                   sizes="64px"
                   priority
@@ -58,21 +72,25 @@ export function Navbar() {
                 />
               </div>
 
-              {/* Brand Name & Subtext */}
-              <div className="flex flex-col">
-                <span className="text-xl sm:text-2xl font-black tracking-tight text-[#0A1A3A] leading-none group-hover:text-[#00A8C6] transition-colors">
+              {/* Official Brand Typography */}
+              <div className="flex flex-col justify-center">
+                <span className="text-xl sm:text-[23px] font-black tracking-tight text-[#0A1A3A] leading-none group-hover:text-[#00A8C6] transition-colors">
                   Curatrix<span className="text-[#8FBE00]">.</span>
                 </span>
-                <span className="text-[10px] sm:text-[11px] font-extrabold tracking-widest uppercase text-slate-500 mt-1">
-                  Academic Advisors
+                <span className="text-[10px] sm:text-[11px] font-extrabold tracking-wider uppercase text-slate-500 mt-1">
+                  Curatrix Private Limited
                 </span>
               </div>
             </Link>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-1.5">
               {NAV_ITEMS.map((item) => (
-                <NavDropdown key={item.label} item={item} />
+                <NavDropdown
+                  key={item.label}
+                  item={item}
+                  isActive={isItemActive(item)}
+                />
               ))}
             </div>
 
@@ -82,7 +100,7 @@ export function Navbar() {
                 href={WHATSAPP_CONFIG.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-2 rounded-xl bg-[#8FBE00] hover:bg-[#7ea800] active:scale-[0.98] px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-950 shadow-xs transition-all duration-200"
+                className="hidden sm:inline-flex items-center gap-2 rounded-xl bg-[#8FBE00] hover:bg-[#7ea800] active:scale-[0.98] px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-950 shadow-xs transition-all duration-200 shrink-0"
               >
                 <MessageSquare className="h-4 w-4 fill-slate-950/20" />
                 <span>Book Strategy Session</span>
@@ -94,7 +112,7 @@ export function Navbar() {
                 onClick={() => setIsMobileMenuOpen(true)}
                 aria-expanded={isMobileMenuOpen}
                 aria-label="Open main menu"
-                className="lg:hidden p-2 rounded-xl text-slate-700 hover:text-slate-950 hover:bg-slate-200/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A8C6] transition-colors"
+                className="lg:hidden p-2.5 rounded-xl text-slate-700 hover:text-slate-950 hover:bg-slate-200/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A8C6] transition-colors"
               >
                 <svg
                   className="w-6 h-6"
