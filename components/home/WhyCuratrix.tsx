@@ -35,7 +35,7 @@ export function WhyCuratrix() {
   return (
     <section
       id="why-curatrix"
-      aria-label="Why Choose Curatrix Academic Advisors"
+      aria-label="Why Choose Curatrix Private Limited"
       className="py-12 sm:py-16 lg:py-20 bg-white border-t border-slate-200/80 relative"
     >
       <Container size="wide">
@@ -81,7 +81,7 @@ export function WhyCuratrix() {
                 Experience Personalized Global Admissions Mentorship
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 mt-0.5 max-w-2xl leading-relaxed">
-                Connect with our advisory board on WhatsApp to build a strategic admissions profile tailored to top universities in the USA, UK, Canada, Germany, or Australia.
+                Connect with our advisors on WhatsApp to build a strategic admissions profile tailored to top universities in the USA, UK, Canada, Germany, or Australia.
               </p>
             </div>
           </div>

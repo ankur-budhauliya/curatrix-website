@@ -37,18 +37,18 @@ export function FeatureCard({ feature, className }: FeatureCardProps) {
 
   return (
     <motion.article
-      whileHover={{ y: -4, transition: { duration: 0.25, ease: 'easeOut' } }}
+      whileHover={{ y: -4, scale: 1.01, transition: { duration: 0.25, ease: 'easeOut' } }}
       className={cn(
-        'group relative flex flex-col justify-between rounded-2xl p-5 sm:p-6 transition-all duration-300',
-        'bg-white/90 backdrop-blur-xl border border-slate-200/80 shadow-xs hover:shadow-xl hover:shadow-[#00A8C6]/10 hover:border-[#00A8C6]/50',
+        'group relative flex flex-col justify-between rounded-2xl p-5 sm:p-6 transition-all duration-300 ease-out h-full overflow-hidden',
+        'bg-white hover:bg-slate-50/60 border border-slate-200/90 hover:border-[#00A8C6] shadow-xs hover:shadow-xl hover:shadow-[#00A8C6]/10',
         className
       )}
     >
       <div>
         {/* Header: Icon & Badge */}
-        <div className="flex items-center justify-between gap-3 mb-3.5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#00A8C6]/15 to-[#8FBE00]/15 text-[#00A8C6] group-hover:bg-[#00A8C6] group-hover:text-white transition-all duration-300 shadow-xs">
-            <IconComponent className="h-5 w-5 transition-transform duration-300 group-hover:scale-105" />
+        <div className="flex items-center justify-between gap-3 mb-4">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#00A8C6]/10 text-[#00A8C6] group-hover:bg-[#00A8C6] group-hover:text-white group-hover:scale-105 transition-all duration-300 ease-out shadow-2xs">
+            <IconComponent className="h-5 w-5" />
           </div>
 
           {feature.badge && (
@@ -59,17 +59,17 @@ export function FeatureCard({ feature, className }: FeatureCardProps) {
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-bold tracking-tight text-slate-900 group-hover:text-[#00A8C6] transition-colors mb-2 leading-snug">
+        <h3 className="text-lg font-bold tracking-tight text-slate-900 group-hover:text-[#00A8C6] transition-colors duration-200 mb-2 leading-snug">
           {feature.title}
         </h3>
 
         {/* Description */}
-        <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-3.5 font-normal">
+        <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-4 font-normal">
           {feature.description}
         </p>
 
         {/* Highlight Points Checklist */}
-        <div className="space-y-1.5 pt-3 border-t border-slate-100 mb-1">
+        <div className="space-y-1.5 pt-3.5 border-t border-slate-100 mb-1">
           <ul className="space-y-1.5">
             {feature.highlightPoints.map((point, idx) => (
               <li key={idx} className="flex items-start gap-2 text-xs text-slate-700 font-medium leading-snug">

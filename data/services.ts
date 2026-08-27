@@ -3,30 +3,12 @@ import { WHATSAPP_CONFIG } from '@/data/navigation';
 
 export const SERVICES_DATA: ServiceItem[] = [
   {
-    id: 'home-counselling',
-    iconName: 'Home',
-    title: 'Home Counselling',
-    subtitle: 'Bespoke In-Person Mentorship',
-    description:
-      "Personalized counselling sessions at the student's home for families who prefer offline guidance, in-depth profile exploration, and parent alignment.",
-    tag: 'Premium Bespoke',
-    tagVariant: 'gold',
-    deliverables: [
-      'In-person diagnostic consultation with senior advisors',
-      'Comprehensive family & student academic roadmap review',
-      'Personalized admissions timeline and budget feasibility audit',
-    ],
-    ctaLabel: 'Book Home Session on WhatsApp',
-    ctaHref: WHATSAPP_CONFIG.link,
-    featured: true,
-  },
-  {
     id: 'profile-evaluation',
     iconName: 'Compass',
-    title: '360° Profile Diagnostic & Strategy',
-    subtitle: 'Holistic Candidate Audit',
+    title: 'Profile Evaluation',
+    subtitle: 'Holistic Academic Diagnostic',
     description:
-      'Rigorous evaluation of academic transcripts, extracurricular leadership, research publications, and professional milestones to map high-probability admission pathways.',
+      'Rigorous evaluation of academic transcripts, GPA benchmarking, extracurricular leadership, research publications, and career milestones to map high-probability admission pathways.',
     tag: 'Foundation',
     tagVariant: 'blue',
     deliverables: [
@@ -36,11 +18,30 @@ export const SERVICES_DATA: ServiceItem[] = [
     ],
     ctaLabel: 'Evaluate Profile on WhatsApp',
     ctaHref: WHATSAPP_CONFIG.link,
+    featured: true,
+  },
+  {
+    id: 'home-counselling',
+    iconName: 'Home',
+    title: 'Home Counselling',
+    subtitle: 'Bespoke In-Person Mentorship',
+    description:
+      "Personalized counselling sessions at the student's home for families who prefer offline guidance, in-depth profile exploration, and parent alignment.",
+    tag: 'Premium Bespoke',
+    tagVariant: 'gold',
+    deliverables: [
+      'In-person diagnostic consultation with senior mentors',
+      'Comprehensive family & student academic roadmap review',
+      'Personalized admissions timeline and budget feasibility audit',
+    ],
+    ctaLabel: 'Book Home Session on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
+    featured: true,
   },
   {
     id: 'university-shortlisting',
     iconName: 'Target',
-    title: 'Elite University Shortlisting',
+    title: 'University Shortlisting',
     subtitle: 'Data-Backed Institution Fit',
     description:
       'Structured selection of Dream, Reach, Target, and Safe institutions across the USA, UK, Canada, Germany, and Australia based on admissions criteria and career outcomes.',
@@ -56,12 +57,29 @@ export const SERVICES_DATA: ServiceItem[] = [
     featured: true,
   },
   {
-    id: 'sop-essay-editing',
+    id: 'scholarship-assistance',
+    iconName: 'Coins',
+    title: 'Scholarship Assistance',
+    subtitle: 'Maximizing Grant Procurement',
+    description:
+      'Identifying and applying for institutional fellowships, merit scholarships, government grants, and international student funding opportunities.',
+    tag: 'Funding Support',
+    tagVariant: 'green',
+    deliverables: [
+      'University-specific merit scholarship matching',
+      'External endowment & government grant essays',
+      'Tuition budget optimization & funding strategy',
+    ],
+    ctaLabel: 'Explore Aid Options on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
+  },
+  {
+    id: 'sop-application-support',
     iconName: 'FileEdit',
-    title: 'SOP, Essays & Resume Polish',
+    title: 'SOP & Application Support',
     subtitle: 'Editorial Narrative Crafting',
     description:
-      'Bespoke, multi-round editorial mentorship from experienced alumni to craft authentic, intellectually compelling Statements of Purpose and supplemental essays.',
+      'Bespoke, multi-round editorial mentorship from experienced alumni to craft authentic, intellectually compelling Statements of Purpose, resumes, and supplemental essays.',
     tag: 'Highest Impact',
     tagVariant: 'gold',
     deliverables: [
@@ -74,26 +92,9 @@ export const SERVICES_DATA: ServiceItem[] = [
     featured: true,
   },
   {
-    id: 'test-prep-strategy',
-    iconName: 'GraduationCap',
-    title: 'Standardized Test Strategy',
-    subtitle: 'Diagnostic Target Planning',
-    description:
-      'Targeted preparation roadmaps and diagnostic strategy for GRE, GMAT, SAT, IELTS, and TOEFL exams tailored to target institution score percentiles.',
-    tag: 'Score Mastery',
-    tagVariant: 'blue',
-    deliverables: [
-      'Diagnostic test benchmarking',
-      'Score target timeline & test waiver advisory',
-      'Sectional performance improvement roadmap',
-    ],
-    ctaLabel: 'Plan Test Timeline on WhatsApp',
-    ctaHref: WHATSAPP_CONFIG.link,
-  },
-  {
-    id: 'visa-mentorship',
+    id: 'student-visa-guidance',
     iconName: 'ShieldCheck',
-    title: '100% Visa Filing & Consular Mocks',
+    title: 'Student Visa Guidance',
     subtitle: 'Flawless Documentation',
     description:
       'Comprehensive visa application assistance (US F-1, UK Student Route, Canada Study Permit, Germany Student Visa, Australia Subclass 500) with consular mock interview drills.',
@@ -109,26 +110,43 @@ export const SERVICES_DATA: ServiceItem[] = [
     featured: true,
   },
   {
-    id: 'scholarship-advisory',
-    iconName: 'Coins',
-    title: 'Scholarship & Funding Advisory',
-    subtitle: 'Maximizing Grant Procurement',
+    id: 'financial-loan-guidance',
+    iconName: 'GraduationCap',
+    title: 'Financial & Education Loan Guidance',
+    subtitle: 'Transparent Funding Pathways',
     description:
-      'Identifying and applying for institutional fellowships, merit scholarships, government grants, and international student funding opportunities.',
-    tag: 'Funding Support',
-    tagVariant: 'green',
+      'Guidance on collateral and non-collateral education loan structures, forex remittances, blocked accounts for Germany, and proof of funds compliance.',
+    tag: 'Financial Aid',
+    tagVariant: 'blue',
     deliverables: [
-      'University-specific merit scholarship matching',
-      'External endowment & government grant essays',
-      'Education loan negotiation advisory',
+      'Collateral & Non-Collateral loan advisory',
+      'German Blocked Account & Sperrkonto guidance',
+      'Sponsorship affidavits & fund verification checks',
     ],
-    ctaLabel: 'Explore Aid Options on WhatsApp',
+    ctaLabel: 'Get Loan Guidance on WhatsApp',
     ctaHref: WHATSAPP_CONFIG.link,
   },
   {
-    id: 'career-pswr-strategy',
+    id: 'pre-departure-assistance',
+    iconName: 'PlaneTakeoff',
+    title: 'Pre Departure Assistance',
+    subtitle: 'Seamless Transition to Campus',
+    description:
+      'Pre-departure orientation covering student accommodation shortlisting, health insurance, international banking, flight logistics, and campus readiness.',
+    tag: 'Arrival Ready',
+    tagVariant: 'slate',
+    deliverables: [
+      'Student housing & city cost of living advisory',
+      'Forex card & international bank account setup',
+      'Campus alumni mentor introductions',
+    ],
+    ctaLabel: 'Get Ready on WhatsApp',
+    ctaHref: WHATSAPP_CONFIG.link,
+  },
+  {
+    id: 'career-post-study-guidance',
     iconName: 'Briefcase',
-    title: 'Career & Post-Study Work Strategy',
+    title: 'Career & Post Study Guidance',
     subtitle: 'Long-Term ROI Planning',
     description:
       'Aligning program choice with regional labor shortage lists, STEM OPT extensions (up to 3 years in US), UK Graduate Route (2 years), and global corporate recruitments.',
@@ -140,23 +158,6 @@ export const SERVICES_DATA: ServiceItem[] = [
       'International graduate wage benchmarking',
     ],
     ctaLabel: 'View ROI on WhatsApp',
-    ctaHref: WHATSAPP_CONFIG.link,
-  },
-  {
-    id: 'pre-departure-briefing',
-    iconName: 'PlaneTakeoff',
-    title: 'Pre-Departure & Alumni Onboarding',
-    subtitle: 'Seamless Transition to Campus',
-    description:
-      'Pre-departure orientation covering accommodation shortlisting, health insurance, international banking, flight logistics, and campus readiness.',
-    tag: 'Arrival Ready',
-    tagVariant: 'slate',
-    deliverables: [
-      'Student housing & city cost of living advisory',
-      'Forex card & international bank account setup',
-      'Campus alumni mentor introductions',
-    ],
-    ctaLabel: 'Get Ready on WhatsApp',
     ctaHref: WHATSAPP_CONFIG.link,
   },
 ];

@@ -3,11 +3,49 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MessageSquare, X, ChevronDown } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import {
+  MessageSquare,
+  X,
+  ChevronDown,
+  Compass,
+  Home,
+  Target,
+  Award,
+  FileEdit,
+  ShieldCheck,
+  PlaneTakeoff,
+  Briefcase,
+  type LucideIcon,
+} from 'lucide-react';
 import { NavItem } from '@/types/navigation';
 import { WHATSAPP_CONFIG } from '@/data/navigation';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+
+const iconComponentMap: Record<string, LucideIcon> = {
+  compass: Compass,
+  home: Home,
+  target: Target,
+  award: Award,
+  edit: FileEdit,
+  shield: ShieldCheck,
+  plane: PlaneTakeoff,
+  briefcase: Briefcase,
+};
+
+const countryFlagMap: Record<string, string> = {
+  ie: '🇮🇪',
+  lk: '🇱🇰',
+  uae: '🇦🇪',
+  my: '🇲🇾',
+  vn: '🇻🇳',
+  id: '🇮🇩',
+  us: '🇺🇸',
+  gb: '🇬🇧',
+  au: '🇦🇺',
+  ca: '🇨🇦',
+};
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -17,6 +55,7 @@ interface MobileNavProps {
 
 export function MobileNav({ isOpen, onClose, items }: MobileNavProps) {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
+  const pathname = usePathname();
 
   useEffect(() => {
     if (isOpen) {
@@ -34,6 +73,29 @@ export function MobileNav({ isOpen, onClose, items }: MobileNavProps) {
       ...prev,
       [label]: !prev[label],
     }));
+  };
+
+  const isItemActive = (item: NavItem) => {
+    if (item.label === 'Study Abroad') {
+      return pathname === '/' || pathname === '';
+    }
+    if (item.label === 'Tourist Visa') {
+      return pathname === '/tourist-visa' || pathname?.startsWith('/tourist-visa');
+    }
+    return false;
+  };
+
+  const renderMobileIconBadge = (iconKey?: string) => {
+    if (iconKey && countryFlagMap[iconKey]) {
+      return (
+        <span className="text-sm leading-none select-none">
+          {countryFlagMap[iconKey]}
+        </span>
+      );
+    }
+
+    const IconCmp = (iconKey && iconComponentMap[iconKey]) || Compass;
+    return <IconCmp className="h-3.5 w-3.5" />;
   };
 
   if (!isOpen) return null;
@@ -54,15 +116,20 @@ export function MobileNav({ isOpen, onClose, items }: MobileNavProps) {
         aria-modal="true"
         aria-label="Mobile Navigation"
       >
-        {/* Header with Official Logo */}
+        {/* Header with Enlarged Official Logo & Link to / */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-white">
-          <div className="flex items-center gap-3">
-            <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-slate-200 shadow-xs bg-white">
+          <Link
+            href="/"
+            onClick={onClose}
+            className="flex items-center gap-3 select-none"
+            aria-label="Curatrix Private Limited Homepage"
+          >
+            <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-slate-200 shadow-xs bg-white">
               <Image
                 src="/logo.png"
-                alt="Curatrix Academic Advisors Logo"
+                alt="Curatrix Private Limited Logo"
                 fill
-                sizes="44px"
+                sizes="48px"
                 className="object-contain p-0.5"
               />
             </div>
@@ -71,10 +138,10 @@ export function MobileNav({ isOpen, onClose, items }: MobileNavProps) {
                 Curatrix<span className="text-[#8FBE00]">.</span>
               </span>
               <span className="text-[9px] font-extrabold tracking-widest uppercase text-slate-500 mt-0.5">
-                Academic Advisors
+                Curatrix Private Limited
               </span>
             </div>
-          </div>
+          </Link>
 
           <button
             type="button"
@@ -92,6 +159,7 @@ export function MobileNav({ isOpen, onClose, items }: MobileNavProps) {
             {items.map((item) => {
               const hasChildren = item.children && item.children.length > 0;
               const isExpanded = !!expandedSections[item.label];
+              const active = isItemActive(item);
 
               if (!hasChildren) {
                 return (
@@ -99,7 +167,12 @@ export function MobileNav({ isOpen, onClose, items }: MobileNavProps) {
                     key={item.label}
                     href={item.href}
                     onClick={onClose}
-                    className="flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-bold text-slate-800 hover:text-[#00A8C6] hover:bg-white transition-colors"
+                    className={cn(
+                      'flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-bold transition-colors',
+                      active
+                        ? 'text-[#00A8C6] bg-white border border-[#00A8C6]/20 shadow-xs'
+                        : 'text-slate-800 hover:text-[#00A8C6] hover:bg-white'
+                    )}
                   >
                     <span>{item.label}</span>
                     {item.badge && (
@@ -112,28 +185,45 @@ export function MobileNav({ isOpen, onClose, items }: MobileNavProps) {
               }
 
               return (
-                <div key={item.label} className="rounded-xl overflow-hidden bg-white border border-slate-200/80 mb-2">
-                  <button
-                    type="button"
-                    onClick={() => toggleSection(item.label)}
-                    aria-expanded={isExpanded}
-                    className="w-full flex items-center justify-between px-3.5 py-3 text-sm font-bold text-slate-800 hover:text-[#00A8C6] transition-colors"
-                  >
-                    <span className="flex items-center gap-2">
-                      {item.label}
+                <div
+                  key={item.label}
+                  className={cn(
+                    'rounded-xl overflow-hidden bg-white border mb-2 transition-colors',
+                    active ? 'border-[#00A8C6]/40 shadow-2xs' : 'border-slate-200/80'
+                  )}
+                >
+                  <div className="flex items-center justify-between px-3.5 py-3">
+                    <Link
+                      href={item.href}
+                      onClick={onClose}
+                      className={cn(
+                        'flex items-center gap-2 text-sm font-bold flex-1 transition-colors',
+                        active ? 'text-[#00A8C6]' : 'text-slate-800 hover:text-[#00A8C6]'
+                      )}
+                    >
+                      <span>{item.label}</span>
                       {item.badge && (
                         <Badge variant="green" size="sm">
                           {item.badge}
                         </Badge>
                       )}
-                    </span>
-                    <ChevronDown
-                      className={cn(
-                        'w-4 h-4 text-slate-500 transition-transform duration-200',
-                        isExpanded && 'rotate-180 text-[#00A8C6]'
-                      )}
-                    />
-                  </button>
+                    </Link>
+
+                    <button
+                      type="button"
+                      onClick={() => toggleSection(item.label)}
+                      aria-expanded={isExpanded}
+                      aria-label={`Toggle ${item.label} sub-navigation`}
+                      className="p-1 text-slate-500 hover:text-slate-900 rounded-md"
+                    >
+                      <ChevronDown
+                        className={cn(
+                          'w-4 h-4 transition-transform duration-200',
+                          isExpanded && 'rotate-180 text-[#00A8C6]'
+                        )}
+                      />
+                    </button>
+                  </div>
 
                   {isExpanded && (
                     <div className="px-3 pb-3 pt-1 space-y-1 border-t border-slate-100 bg-[#F8FAFC]">
@@ -144,8 +234,8 @@ export function MobileNav({ isOpen, onClose, items }: MobileNavProps) {
                           onClick={onClose}
                           className="flex items-start gap-2.5 p-2 rounded-lg hover:bg-white transition-colors"
                         >
-                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#00A8C6]/10 text-[10px] font-bold text-[#00A8C6] uppercase mt-0.5">
-                            {sub.icon || '•'}
+                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#00A8C6]/10 text-[#00A8C6] border border-[#00A8C6]/20 mt-0.5">
+                            {renderMobileIconBadge(sub.icon)}
                           </span>
                           <div>
                             <div className="text-xs font-semibold text-slate-900">

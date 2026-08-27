@@ -4,29 +4,30 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 
 export const metadata: Metadata = {
-  title: 'Curatrix Private Limited | Study Abroad Mentorship & Global Admissions',
+  title: 'Curatrix Private Limited | Study Abroad Consultant & Overseas Education Advisory',
   description:
-    'Curatrix Private Limited provides transparent, bespoke study abroad advisory, profile evaluation, home counselling, and university admissions mentorship across the USA, UK, Canada, Germany, and Australia.',
+    'Curatrix Private Limited is a premier study abroad consultancy providing personalized admission mentorship, profile evaluation, home counselling, university shortlisting, and student visa guidance across USA, UK, Canada, Germany, and Australia.',
   keywords: [
+    'Study Abroad Consultant',
+    'Overseas Education Consultant',
+    'Study in USA',
+    'Study in UK',
+    'Study in Canada',
+    'Study in Germany',
+    'Study in Australia',
     'Curatrix Private Limited',
     'Curatrix',
-    'study abroad advisory',
-    'study in USA',
-    'study in UK',
-    'study in Canada',
-    'study in Germany',
-    'study in Australia',
-    'home counselling study abroad',
-    'university admissions mentorship',
-    'scholarship advisory',
-    'visa guidance',
+    'Home Counselling Study Abroad',
+    'University Admissions Mentorship',
+    'Scholarship Assistance',
+    'Student Visa Guidance',
   ],
   authors: [{ name: 'Curatrix Private Limited' }],
   metadataBase: new URL('https://curatrix.co.in'),
   openGraph: {
-    title: 'Curatrix Private Limited | Study Abroad Mentorship & Global Admissions',
+    title: 'Curatrix Private Limited | Study Abroad Consultant & Overseas Education Advisory',
     description:
-      'Transparent, bespoke study abroad advisory, candidate profile evaluation, and home counselling across the USA, UK, Canada, Germany, and Australia.',
+      'Personalized study abroad mentorship, candidate profile evaluation, home counselling, and top university admissions across USA, UK, Canada, Germany, and Australia.',
     url: 'https://curatrix.co.in',
     siteName: 'Curatrix Private Limited',
     images: [
@@ -42,9 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Curatrix Private Limited',
+    title: 'Curatrix Private Limited | Study Abroad Consultant',
     description:
-      'Bespoke study abroad advisory offering profile evaluation, home counselling, and admissions mentorship across USA, UK, Canada, Germany, and Australia.',
+      'Premier study abroad consultancy offering profile evaluation, home counselling, and university admissions mentorship across USA, UK, Canada, Germany, and Australia.',
     images: ['/logo.png'],
   },
   icons: {
