@@ -35,13 +35,16 @@ const iconComponentMap: Record<string, LucideIcon> = {
 };
 
 const countryFlagMap: Record<string, string> = {
+  ie: '🇮🇪',
+  lk: '🇱🇰',
+  uae: '🇦🇪',
+  my: '🇲🇾',
+  vn: '🇻🇳',
+  id: '🇮🇩',
   us: '🇺🇸',
   gb: '🇬🇧',
+  au: '🇦🇺',
   ca: '🇨🇦',
-  de: '🇩🇪',
-  uae: '🇦🇪',
-  sg: '🇸🇬',
-  th: '🇹🇭',
 };
 
 interface MobileNavProps {

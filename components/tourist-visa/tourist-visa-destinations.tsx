@@ -14,7 +14,7 @@ export function TouristVisaDestinations() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.06,
+        staggerChildren: 0.05,
       },
     },
   };
@@ -34,27 +34,27 @@ export function TouristVisaDestinations() {
   return (
     <section
       id="countries"
-      aria-label="Tourist Visa Countries We Serve"
+      aria-label="Tourist Visa Countries We Cover"
       className="py-12 sm:py-16 lg:py-20 bg-white border-t border-slate-200/80 relative"
     >
       <Container size="wide">
         {/* Section Heading */}
         <SectionHeading
-          badge="Popular Destinations"
+          badge="10 Global Destinations"
           badgeVariant="blue"
           title="Countries We"
-          highlight="Serve."
-          subtitle="Explore our specialized tourist and visitor visa documentation guidance across 7 top international travel destinations."
+          highlight="Cover."
+          subtitle="Explore our specialized tourist and visitor visa documentation guidance across 10 top international travel destinations."
           className="mb-8 sm:mb-10"
         />
 
-        {/* 7-Card Responsive Grid */}
+        {/* 10-Card Responsive Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5"
         >
           {TOURIST_VISA_COUNTRIES.map((country) => (
             <motion.article
@@ -63,13 +63,13 @@ export function TouristVisaDestinations() {
               whileHover={{ y: -6, scale: 1.01, transition: { duration: 0.25, ease: 'easeOut' } }}
               className="group relative flex flex-col justify-between rounded-2xl overflow-hidden bg-white border border-slate-200/90 shadow-xs hover:shadow-2xl hover:border-[#00A8C6] hover:ring-2 hover:ring-[#00A8C6]/15 transition-all duration-300 ease-out h-full"
             >
-              {/* Country Image Banner with Strong Dark Gradient Scrim */}
+              {/* Country Image Banner with Dark Gradient Scrim */}
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
                 <Image
                   src={country.image}
                   alt={`${country.country} Tourist Visa Assistance - Curatrix Private Limited`}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 20vw"
                   className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
@@ -82,22 +82,22 @@ export function TouristVisaDestinations() {
                   </span>
                 </div>
 
-                {/* Prominent Country Name Overlaid on Image with Strong Contrast */}
+                {/* Prominent Country Name Overlaid on Image */}
                 <div className="absolute bottom-3 left-3.5 right-3.5 text-white z-10">
-                  <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white leading-tight drop-shadow-md">
+                  <h3 className="text-xl font-black tracking-tight text-white leading-tight drop-shadow-md">
                     {country.country}
                   </h3>
-                  <p className="text-xs font-semibold text-white/95 drop-shadow-xs truncate mt-0.5">
+                  <p className="text-[11px] font-semibold text-white/95 drop-shadow-xs truncate mt-0.5">
                     {country.tagline}
                   </p>
                 </div>
               </div>
 
               {/* Card Body */}
-              <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
-                <div className="space-y-3.5">
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div className="space-y-3">
                   {/* Category Pill */}
-                  <div className="inline-block px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200/80 text-[10px] font-bold uppercase tracking-wider text-slate-800">
+                  <div className="inline-block px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200/80 text-[10px] font-bold uppercase tracking-wider text-slate-800">
                     {country.visaType}
                   </div>
 
@@ -107,9 +107,9 @@ export function TouristVisaDestinations() {
                   </p>
 
                   {/* Key Highlights Checklist */}
-                  <div className="space-y-1.5 pt-2.5 border-t border-slate-100">
+                  <div className="space-y-1 pt-2 border-t border-slate-100">
                     {country.popularHighlights.map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-1.5 text-xs text-slate-700 font-medium">
+                      <div key={idx} className="flex items-center gap-1.5 text-[11px] text-slate-700 font-medium">
                         <CheckCircle2 className="h-3.5 w-3.5 text-[#8FBE00] shrink-0" />
                         <span className="truncate">{item}</span>
                       </div>
@@ -118,7 +118,7 @@ export function TouristVisaDestinations() {
                 </div>
 
                 {/* Card Action Link */}
-                <div className="mt-4 pt-3.5 border-t border-slate-100">
+                <div className="mt-4 pt-3 border-t border-slate-100">
                   <a
                     href={country.ctaHref}
                     target="_blank"

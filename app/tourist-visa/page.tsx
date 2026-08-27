@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { TouristVisaHero } from '@/components/tourist-visa/tourist-visa-hero';
 import { TouristVisaDestinations } from '@/components/tourist-visa/tourist-visa-destinations';
+import { TouristVisaServices } from '@/components/tourist-visa/tourist-visa-services';
 import { TouristVisaProcess } from '@/components/tourist-visa/tourist-visa-process';
 import { TouristVisaDocuments } from '@/components/tourist-visa/tourist-visa-documents';
 import { TouristVisaFaqs } from '@/components/tourist-visa/tourist-visa-faqs';
@@ -10,23 +11,26 @@ import { TouristVisaCta } from '@/components/tourist-visa/tourist-visa-cta';
 export const metadata: Metadata = {
   title: 'Tourist Visa Services | Curatrix Private Limited',
   description:
-    'Professional Tourist Visa assistance for selected countries including USA, UK, Canada, Germany, UAE, Singapore, and Thailand by Curatrix Private Limited.',
+    'Professional Tourist Visa assistance for selected countries including Ireland, Sri Lanka, UAE, Malaysia, Vietnam, Indonesia, USA, UK, Australia, and Canada by Curatrix Private Limited.',
   keywords: [
     'Tourist Visa Consultant',
+    'Ireland Tourist Visa',
+    'Sri Lanka ETA',
+    'UAE Tourist Visa',
+    'Malaysia Tourist Visa',
+    'Vietnam eVisa',
+    'Indonesia Tourist Visa',
     'USA Tourist Visa',
     'UK Tourist Visa',
+    'Australia Tourist Visa',
     'Canada Tourist Visa',
-    'Germany Tourist Visa',
-    'UAE Tourist Visa',
-    'Singapore Tourist Visa',
-    'Thailand Tourist Visa',
     'Tourist Visa Services',
     'Curatrix Private Limited',
   ],
   openGraph: {
     title: 'Tourist Visa Services | Curatrix Private Limited',
     description:
-      'Professional Tourist Visa assistance, document verification, and filing guidance across selected international destinations.',
+      'Professional Tourist Visa assistance, document verification, and filing guidance across 10 selected international destinations.',
     url: 'https://curatrix.co.in/tourist-visa',
     siteName: 'Curatrix Private Limited',
     images: [
@@ -45,25 +49,28 @@ export const metadata: Metadata = {
 export default function TouristVisaPage() {
   return (
     <div className="flex flex-col">
-      {/* 1. Tourist Visa Hero */}
+      {/* 1. Tourist Visa Hero (Plane Visual) */}
       <TouristVisaHero />
 
-      {/* 2. Countries We Serve (7 Destinations) */}
+      {/* 2. Countries We Cover (10 Destinations) */}
       <TouristVisaDestinations />
 
-      {/* 3. Simple Visa Process Timeline (6 Steps) */}
+      {/* 3. Why Choose Curatrix for Tourist Visas (Tourist Visual + Services) */}
+      <TouristVisaServices />
+
+      {/* 4. Simple Visa Process Timeline (6 Steps) */}
       <TouristVisaProcess />
 
-      {/* 4. Required Documents Checklist */}
+      {/* 5. Required Documents Checklist */}
       <TouristVisaDocuments />
 
-      {/* 5. Frequently Asked Questions */}
+      {/* 6. Frequently Asked Questions */}
       <TouristVisaFaqs />
 
-      {/* 6. Important Embassy Disclaimer & Advisory Notice */}
+      {/* 7. Important Embassy Disclaimer & Advisory Notice */}
       <TouristVisaNotice />
 
-      {/* 7. Bottom Consultation Call-to-Action */}
+      {/* 8. Bottom Consultation Call-to-Action */}
       <TouristVisaCta />
     </div>
   );

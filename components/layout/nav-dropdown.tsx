@@ -29,13 +29,16 @@ const iconComponentMap: Record<string, LucideIcon> = {
 };
 
 const countryFlagMap: Record<string, string> = {
+  ie: '🇮🇪',
+  lk: '🇱🇰',
+  uae: '🇦🇪',
+  my: '🇲🇾',
+  vn: '🇻🇳',
+  id: '🇮🇩',
   us: '🇺🇸',
   gb: '🇬🇧',
+  au: '🇦🇺',
   ca: '🇨🇦',
-  de: '🇩🇪',
-  uae: '🇦🇪',
-  sg: '🇸🇬',
-  th: '🇹🇭',
 };
 
 interface NavDropdownProps {
@@ -99,10 +102,10 @@ export function NavDropdown({ item, isActive }: NavDropdownProps) {
       <Link
         href={item.href}
         className={cn(
-          'relative px-3.5 py-2 text-sm font-semibold transition-all duration-150 rounded-xl select-none',
+          'h-10 px-3.5 inline-flex items-center justify-center text-sm font-semibold transition-all duration-200 rounded-xl select-none',
           isActive
             ? 'text-[#00A8C6] bg-[#00A8C6]/10 font-bold border border-[#00A8C6]/20 shadow-2xs'
-            : 'text-slate-700 hover:text-[#00A8C6] hover:bg-slate-100/80'
+            : 'text-slate-700 hover:text-[#00A8C6] hover:bg-slate-100/80 border border-transparent'
         )}
       >
         <span>{item.label}</span>
@@ -128,18 +131,18 @@ export function NavDropdown({ item, isActive }: NavDropdownProps) {
         aria-expanded={isOpen}
         aria-haspopup="true"
         className={cn(
-          'inline-flex items-center gap-1.5 px-3.5 py-2 text-sm transition-all duration-150 rounded-xl cursor-pointer select-none',
+          'h-10 px-3.5 inline-flex items-center justify-center gap-1.5 text-sm transition-all duration-200 rounded-xl cursor-pointer select-none',
           isActive
             ? 'text-[#00A8C6] bg-[#00A8C6]/10 font-bold border border-[#00A8C6]/20 shadow-2xs'
             : isOpen
-            ? 'text-[#00A8C6] bg-slate-100/90 font-bold'
-            : 'text-slate-700 hover:text-[#00A8C6] hover:bg-slate-100/80 font-semibold'
+            ? 'text-[#00A8C6] bg-slate-100/90 font-bold border border-slate-200/80'
+            : 'text-slate-700 hover:text-[#00A8C6] hover:bg-slate-100/80 font-semibold border border-transparent'
         )}
       >
         <span>{item.label}</span>
         <svg
           className={cn(
-            'w-4 h-4 transition-transform duration-200',
+            'w-4 h-4 transition-transform duration-200 shrink-0',
             isActive ? 'text-[#00A8C6]' : 'text-slate-400',
             isOpen && 'rotate-180 text-[#00A8C6]'
           )}
@@ -155,13 +158,13 @@ export function NavDropdown({ item, isActive }: NavDropdownProps) {
       {/* Dropdown Menu Panel */}
       <div
         className={cn(
-          'absolute left-0 top-full pt-2 w-[360px] sm:w-[420px] z-50 transition-all duration-200 ease-out origin-top-left overflow-visible',
+          'absolute left-0 top-[calc(100%+4px)] w-[360px] sm:w-[420px] max-h-[460px] overflow-y-auto z-50 transition-all duration-200 ease-out origin-top-left',
           isOpen
             ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
             : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
         )}
       >
-        <div className="rounded-2xl bg-white/95 backdrop-blur-xl p-3 shadow-2xl ring-1 ring-black/5 border border-slate-200/90 overflow-visible">
+        <div className="rounded-2xl bg-white/95 backdrop-blur-xl p-3 shadow-2xl ring-1 ring-black/5 border border-slate-200/90">
           <div className="px-3 py-2 border-b border-slate-100 mb-1 flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
               Explore {item.label}
@@ -171,16 +174,16 @@ export function NavDropdown({ item, isActive }: NavDropdownProps) {
             </span>
           </div>
 
-          <ul role="menu" className="space-y-1 overflow-visible">
+          <ul role="menu" className="space-y-1">
             {item.children.map((subItem) => (
-              <li key={subItem.title} role="none" className="overflow-visible">
+              <li key={subItem.title} role="none">
                 <Link
                   href={subItem.href}
                   role="menuitem"
                   onClick={() => setIsOpen(false)}
-                  className="group relative flex items-start gap-3.5 rounded-xl p-2.5 transition-all duration-200 hover:bg-slate-50/90 focus:bg-slate-50/90 focus:outline-none overflow-visible"
+                  className="group relative flex items-start gap-3.5 rounded-xl p-2.5 transition-all duration-200 hover:bg-slate-50/90 focus:bg-slate-50/90 focus:outline-none"
                 >
-                  {/* Floating Icon Badge - High Z-Index, No Clipping */}
+                  {/* Floating Icon Badge - High Z-Index */}
                   <div className="relative z-10 shrink-0 mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl bg-[#00A8C6]/10 text-[#00A8C6] border border-[#00A8C6]/20 shadow-2xs group-hover:bg-[#00A8C6] group-hover:text-white group-hover:border-[#00A8C6] group-hover:scale-105 transition-all duration-200">
                     {renderIconBadge(subItem.icon)}
                   </div>
